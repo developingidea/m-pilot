@@ -46,13 +46,10 @@ app.post('/webhook/', function(req, res) {
 			if ( text.search("szeretlek") > -1) {
 				sendText(sender, "Én is! 😘");
 			} 
-
 			if ( text.search("vicc") > -1) {
 				randomJoke = jokes[Math.floor((Math.random() * jokes.length ))];
 				sendText(sender, randomJoke);
-			}
-
-			else if {
+			} else if {
 				sendText(sender, "Nem értem: '" + text.substring(0, 10)+ "...'");
 			}
 		}
