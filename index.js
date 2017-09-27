@@ -59,6 +59,12 @@ app.post('/webhook/', function(req, res) {
 				check = true
 			} 
 
+			if ( text.search("url:") > -1 ) {
+				let url = text.replace("url:");
+				sendCard(sender, url)
+				check = true
+			} 
+
 			if ( check == false ) {
 				sendText(sender, "Nem értem: '" + text.substring(0, 10)+ "...'");
 			}
@@ -73,6 +79,38 @@ app.post('/webhook/', function(req, res) {
 
 function sendText(sender, text) {
 	let messageData = {text: text}
+	request({
+		url: "https://graph.facebook.com/v2.6/me/messages",
+		qs : {access_token: token},
+		method: "POST",
+		json: {
+			recipient: {id: sender},
+			message : messageData,
+		}
+	}, function(error, response, body) {
+		if (error) {
+			console.log("sending error")
+		} else if (response.body.error) {
+			console.log("response body error")
+		}
+	})
+}
+
+function sendCard(sender, url) {
+
+	let messageData = [
+		{
+			"buttons":[
+		      {
+		        "type":"web_url",
+		        "url": url,
+		        "title":"Megnézem",
+		        "webview_height_ratio": "compact"
+		      }
+	   	 ]
+	    }
+    ]
+
 	request({
 		url: "https://graph.facebook.com/v2.6/me/messages",
 		qs : {access_token: token},
