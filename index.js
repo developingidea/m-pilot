@@ -36,6 +36,7 @@ let jokes = [
 ];
 
 let randomJoke = '';
+let check = false;
 
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
@@ -44,19 +45,25 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
+
+			check = false
 			
 			if ( text.search("szeretlek") > -1 ) {
 				sendText(sender, "Én is! 😘");
+				check = true
 			} 
 
 			if ( text.search("vicc") > -1 ) {
 				let randomJoke = jokes[ Math.floor( (Math.random() * jokes.length ))];
-				sendText(sender, randomJoke);
+				sendText(sender, randomJoke)
+				check = true
 			} 
 
-			else if  {
+			if ( check == false ) {
 				sendText(sender, "Nem értem: '" + text.substring(0, 10)+ "...'");
 			}
+
+
 		}
 	}
 	res.sendStatus(200)
