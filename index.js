@@ -57,6 +57,11 @@ app.post('/webhook/', function(req, res) {
 				let randomJoke = jokes[ Math.floor( (Math.random() * jokes.length ))];
 				sendText(sender, randomJoke)
 				check = true
+			}
+
+			if ( text.toLowerCase().search("hol a pumpa") > -1 ) {				
+				sendText(sender, 'Már a helyén :P')
+				check = true
 			} 
 
 			if ( text.search("url:") > -1 ) {
@@ -98,16 +103,15 @@ function sendText(sender, text) {
 
 function sendCard(sender, url) {
 
-	let messageData = [
-		{
-			"buttons":[
+	let messageData = 
+	[{"buttons":[
 		      {
 		        "type":"web_url",
 		        "url": url,
 		        "title":"Megnézem",
 		        "webview_height_ratio": "compact"
 		      }
-	   	 ]
+	   	 	]
 	    }
     ]
 
