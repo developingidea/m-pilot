@@ -39,9 +39,7 @@ app.post('/webhook/', function(req, res) {
 			
 			if ( text.search("szeretlek") > -1)) {
 				sendText(sender, "Én is! 😘");
-			} else {
-				sendText(sender, "Nem értem: '" + text.substring(0, 10)+ "...'");
-			}
+			} 
 		}
 	}
 	res.sendStatus(200)
