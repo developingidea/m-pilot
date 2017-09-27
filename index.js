@@ -44,7 +44,7 @@ app.post('/webhook/', function(req, res) {
 		let event = messaging_events[i]
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
-			let text = event.message.text
+			let text = event.message.text.toLowerCase()
 
 			check = false
 			
@@ -59,7 +59,7 @@ app.post('/webhook/', function(req, res) {
 				check = true
 			}
 
-			if ( text.toLowerCase().search("pumpa") > -1 ) {				
+			if ( text.search("pumpa") > -1 ) {				
 				sendText(sender, 'Már a helyén :P')
 				check = true
 			} 
