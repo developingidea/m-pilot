@@ -1,0 +1,10 @@
+# Ignore OS specific files
+.DS_Store
+
+# Ignore node files.
+/_frontend/node_modules/*
+/_frontend/node_modules/
+.byebug_history
+
+# Ignore other files.
+*.psd
