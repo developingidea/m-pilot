@@ -15,12 +15,12 @@ app.use(bodyParser.json())
 // ROUTES
 
 app.get('/', function(req, res) {
-	res.send("Szeva, én vagyok a chatrobot!")
+	res.send("Szeva, én vagyok a ChatRobot!")
 })
 
 let token = ""
 
-// Set up Facebook 
+// Facebook 
 
 app.get('/webhook/', function(req, res) {
 	if (req.query['hub.verify_token'] === "gr-messenger") {
@@ -64,6 +64,7 @@ function sendText(sender, text) {
 app.listen(app.get('port'), function() {
 	console.log("running: port")
 })
+
 
 
 
