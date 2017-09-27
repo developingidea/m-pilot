@@ -29,9 +29,10 @@ app.get('/webhook/', function(req, res) {
 	res.send("Hibás token")
 })
 
-var viccek [
+let viccek = [
 	'- Mi az abszolút pech? - ??? - Lezuhanni egy repülővel egy süllyedő hajóra.',
-	'- Mi az? Fekete a színe, de fehér levelei vannak? - ??? - Néger postás.'
+	'- Mi az? Fekete a színe, de fehér levelei vannak? - ??? - Néger postás.',
+	'- Vádlott, miért ad elő nekem ma a történtekről a tegnapitól teljesen eltérő történetet? - Azért bíró úr, mert a tegnapit nem hitte el...'
 ]
 
 app.post('/webhook/', function(req, res) {
@@ -47,7 +48,7 @@ app.post('/webhook/', function(req, res) {
 			} 
 
 			if ( text.search("vicc") > -1) {
-				sendText(sender, vicc[Math.floor((Math.random() * 10) viccek.length );]);
+				sendText(sender, viccek[Math.floor((Math.random() * viccek.length ))] );
 			}
 
 			else if {
