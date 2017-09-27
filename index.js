@@ -35,6 +35,8 @@ let jokes = [
 	"- Vádlott, miért ad elő nekem ma a történtekről a tegnapitól teljesen eltérő történetet? - Azért bíró úr, mert a tegnapit nem hitte el..."
 ];
 
+let randomJoke = '';
+
 app.post('/webhook/', function(req, res) {
 	let messaging_events = req.body.entry[0].messaging
 	for (let i = 0; i < messaging_events.length; i++) {
@@ -48,11 +50,11 @@ app.post('/webhook/', function(req, res) {
 			} 
 
 			if ( text.search("vicc") > -1 ) {
-				randomJoke = jokes[Math.floor((Math.random() * jokes.length ))];
+				let randomJoke = jokes[ Math.floor( (Math.random() * jokes.length ))];
 				sendText(sender, randomJoke);
 			} 
-			
-			else {
+
+			else if  {
 				sendText(sender, "Nem értem: '" + text.substring(0, 10)+ "...'");
 			}
 		}
