@@ -59,7 +59,7 @@ app.post('/webhook/', function(req, res) {
 				check = true
 			}
 
-			if ( text.toLowerCase().search("hol a pumpa") > -1 ) {				
+			if ( text.toLowerCase().search("pumpa") > -1 ) {				
 				sendText(sender, 'Már a helyén :P')
 				check = true
 			} 
