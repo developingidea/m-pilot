@@ -36,7 +36,12 @@ app.post('/webhook/', function(req, res) {
 		let sender = event.sender.id
 		if (event.message && event.message.text) {
 			let text = event.message.text
-			sendText(sender, "Text echo: " + text.substring(0, 100))
+			
+			if ( text.search('szeretlek' > -1)) {
+				sendText(sender, "Text echo: " + text.substring(0, 100));
+			} else {
+				sendText(sender, "Nem értem: '" + text.substring(0, 10)+"...'");
+			}
 		}
 	}
 	res.sendStatus(200)
