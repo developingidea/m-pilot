@@ -48,12 +48,12 @@ app.post('/webhook/', function(req, res) {
 
 			check = false
 
-			if ( text.search("mizu") > -1 && text.search("hogy vagy") > -1) {
+			if ( text.search("mizu") > -1 || text.search("hogy vagy") > -1) {
 				sendText(sender, "Minden ok, dolgozom 0-24 😁");
 				check = true
 			}
 
-			if ( text.search("hogy hívnak?") > -1 && text.search("mi a neved?") > -1 ) {
+			if ( text.search("hogy hívnak?") > -1 || text.search("mi a neved?") > -1 ) {
 				sendText(sender, "Én GR Chatbot vagyok 😎");
 				check = true
 			}
