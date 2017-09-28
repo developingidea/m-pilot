@@ -54,7 +54,7 @@ app.post('/webhook/', function(req, res) {
 			}
 
 			if ( text.search("hogy hívnak?") > -1 || text.search("mi a neved?") > -1 ) {
-				sendText(sender, "Én GR Chatbot vagyok 😎");
+				sendText(sender, "Én a GR Chatbot vagyok 😎");
 				check = true
 			}
 			
