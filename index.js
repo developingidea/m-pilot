@@ -47,6 +47,16 @@ app.post('/webhook/', function(req, res) {
 			let text = event.message.text.toLowerCase()
 
 			check = false
+
+			if ( text.search("mizu") > -1 && text.search("hogy vagy") > -1) {
+				sendText(sender, "Minden ok, dolgozom 0-24 😁");
+				check = true
+			}
+
+			if ( text.search("hogy hívnak?") > -1 && text.search("mi a neved?") > -1 ) {
+				sendText(sender, "Én GR Chatbot vagyok 😎");
+				check = true
+			}
 			
 			if ( text.search("szeretlek") > -1 ) {
 				sendText(sender, "Én is! 😘");
